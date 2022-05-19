@@ -34,7 +34,7 @@ int main()
 //Time taken to execute a program
 #include <stdio.h>
 #include <time.h>
-int main(void)
+int main()
 {
 	time_t start, end;
 	start = time(NULL);
@@ -44,4 +44,5 @@ int main(void)
 	printf("Sum of %d and %d is %d\n", a, b, a + b);
 	end = time(NULL);
 	printf("Time taken to print sum is %.2f seconds", difftime(end, start));
+	return 0;
 }
