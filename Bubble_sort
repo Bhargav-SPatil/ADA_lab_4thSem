@@ -1,10 +1,13 @@
 #include <stdio.h>
+#include <time.h>
 
 int main()
 {
     int n = 10, i, j, temp, flag = 0;
+    time_t start, end;
     int num[] = {40, 30, 60, 10, 80, 50, 70, 100, 20, 90};
     
+    start = time(NULL);
     for(i = 0; i < 9; i++){
         for(j = 0; j < n - i - 1; j++){
             if(num[j] > num[j + 1]){
@@ -14,10 +17,12 @@ int main()
             }
         }
     }
-    
+    end = time(NULL);
     printf("Sorted array is: \n");
     for(i = 0; i < n; i++)
     printf("%d \t", num[i]);
+    
+    printf("\nTime taken to bubble sort is: %lf", difftime(end, start));
     
     
     return 0;
