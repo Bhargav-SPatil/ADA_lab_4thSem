@@ -38,7 +38,8 @@ int main(void)
 {
 	time_t start, end;
 	start = time(NULL);
-	int a, b;
+	int a, b;	
+	printf("Enter the numbers: \n");
 	scanf("%d %d", &a, &b);
 	printf("Sum of %d and %d is %d\n", a, b, a + b);
 	end = time(NULL);
