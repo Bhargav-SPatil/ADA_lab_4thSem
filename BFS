@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int n, i, j, a[20][20], visited[20], f=0, r=-1, q[20], flag = 0;
+
+void bfs(int v){
+
+    int w;
+    visited[v] = 1;
+    q[++r] = v;
+    while(f <= r){
+        v = q[f++];
+        for(w = 1; w <= n; w++){
+            if(a[v][w] == 1 && visited[w] == 0){
+                visited[w] = 1;
+                flag = 1;
+                q[++r] = w;
+                printf("%d \t", w);
+            }
+        }
+    }
+}
+
+int main(){
+    int v;
+    printf("Enter the number of vertices: ");
+    scanf("%d", &n);
+
+    printf("Enter the adjacency matrix: \n");
+    for(i = 1; i <= n; i++){
+        for(j = 1; j <= n; j++){
+            scanf("%d", &a[i][j]);
+            printf("\t");
+        }
+        printf("\n");
+    }
+
+    for(i = 1; i <= n; i++)
+    visited[i] = 0;
+
+    printf("Enter the start vertex: ");
+    scanf("%d", &v);
+
+    printf("The nodes that are reachable from %d are: \n", v);
+    bfs(v);
+
+    if(flag == 0)
+    printf("There is no path");
+
+    return 0;
+}
