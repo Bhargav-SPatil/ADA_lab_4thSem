@@ -1,0 +1,37 @@
+#include<stdio.h>
+int a[30][30],reach[30],n;
+void dfs(int v){
+     int i;
+     reach[v]=1;
+     for(i=1;i<=n;i++){
+        if(a[v][i]&&!reach[i]){
+            printf("%d -> %d", v, i);
+            dfs(i);
+        }
+     }
+ }
+ int main(){
+    int i,j,count=0;
+    printf("Enter no of vertices:");
+   scanf("%d", &n);
+    for(i=1;i<=n;i++)
+        for(j=1;j<=n;j++){
+        reach[i]=0;
+        a[i][j]=0;
+        }
+   printf("Enter adjacency matrix: \n");
+    for(i=1;i<=n;i++)
+      for(j=1;j<=n;j++)
+        scanf("%d", &a[i][j]);
+   printf("connectivity of the graph are \n");
+    dfs(1);
+    for(i=1;i<=n;i++)
+       if(reach[i])
+         count++;
+    if(count==n)
+       cprintf("Graph is connected.\n");
+    else
+      printf("Graph is disconnected.\n");
+   
+    return 0;
+  }
