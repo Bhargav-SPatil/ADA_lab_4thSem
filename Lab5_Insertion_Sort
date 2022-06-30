@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <time.h>
+
+int arr[10000], n;
+void delay(){
+    int i, temp;
+    for(i=0; i<50000; i++){
+        temp = 123/234;
+    }
+}
+
+void insertion_sort(){
+    int i, j, key;
+    for(i=0; i<n; i++){
+        key = arr[i];
+        j = i - 1;
+        while(j>=0 && key<arr[j]){
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = key;
+        delay();
+    }
+}
+
+int main(){
+    int i;
+    clock_t start, end;
+    printf("Enter the length of array");
+    scanf("%d", &n);
+    
+    printf("Enter the elements: \n");
+    for(i=0; i<n; i++){
+        scanf("%d", &arr[i]);
+    }
+    
+    start = clock();
+    insertion_sort();
+    end = clock();
+    printf("Time taken: %f seconds \n", (double)(end-start)/CLOCKS_PER_SEC);
+    for(i=0; i<n; i++){
+        printf("%d \t", arr[i]);
+    }
+}
