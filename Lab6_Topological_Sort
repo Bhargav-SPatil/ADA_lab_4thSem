@@ -1,8 +1,17 @@
-#include<stdio.h> 
-#include<conio.h> 
+#include<stdio.h>
+#include<time.h>
+
+int t[100];
+
+void delay(){
+    int i, temp;
+    for(i=0; i<50000; i++){
+        temp = 123/234;
+    }
+}
 
 void topology_src_removal(int n, int a[100][100]) { 
-    int i,j,k,u,v,top,s[10],t[10],indeg[10],sum; 
+    int i,j,k,u,v,top,s[10],indeg[10],sum; 
     for(i=0;i<n;i++) { 
         sum=0; 
         for(j=0;j<n;j++)
@@ -25,19 +34,26 @@ void topology_src_removal(int n, int a[100][100]) {
                     s[++top]=v; 
             } 
         } 
+        delay();
     }
-    printf("Topological order :");
-    for(i=0;i<n;i++) 
-        printf("  %d", t[i]); 
 } 
 
 void main() { 
-int i,j,a[100][100],n;
-printf("Enter number of nodes\n"); 
-scanf("%d", &n); 
-printf("Enter the adjacency matrix\n"); 
-for(i=0;i<n;i++) 
-    for(j=0;j<n;j++) 
-        scanf("%d", &a[i][j]); 
-topology_src_removal(n,a);
+    int i,j,a[100][100],n;
+    clock_t start, end;
+    printf("Enter number of nodes\n"); 
+    scanf("%d", &n); 
+    printf("Enter the adjacency matrix\n"); 
+    for(i=0;i<n;i++) 
+        for(j=0;j<n;j++) 
+            scanf("%d", &a[i][j]); 
+
+    start = clock();
+    topology_src_removal(n,a);
+    end = clock();
+    printf("Time taken: %f seconds \n", (double)(end-start)/CLOCKS_PER_SEC);
+    
+    printf("Topological order :");
+    for(i=0;i<n;i++) 
+        printf("  %d", t[i]); 
 }
