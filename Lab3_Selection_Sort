@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <time.h>
+
+int arr[10000], n;
+void delay(){
+    int i, temp;
+    for(i=0; i<50000; i++){
+        temp = 123/234;
+    }
+}
+
+void selection_sort(){
+    int i, j, min, temp;
+    for(i=0;i<(n-1);i++){
+        min=i;
+        for(j=(i+1);j<n;j++){
+            if(arr[j]<arr[min]){
+                min=j;
+            }
+        }
+        temp = arr[min];
+        arr[min]=arr[i];
+        arr[i]=temp;
+        delay();
+    }
+}
+
+int main(){
+    int i;
+    clock_t start, end;
+    printf("Enter the length of array: ");
+    scanf("%d", &n);
+    
+    printf("Enter the elements: \n");
+    for(i=0; i<n; i++){
+        scanf("%d", &arr[i]);
+    }
+    
+    start = clock();
+    selection_sort();
+    end = clock();
+    printf("Time taken: %f seconds \n", (double)(end-start)/CLOCKS_PER_SEC);
+    for(i=0; i<n; i++){
+        printf("%d \t", arr[i]);
+    }
+}
