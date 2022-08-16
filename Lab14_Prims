@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int a[30][30], visited[30], n, t_wt = 0,c=0;
+int flag = 0;
+
+void prim(int v)
+{
+    int indi, indj;
+    visited[v] = 1;
+    int min = 10000000;
+    for(int i=1; i<=n; i++){
+        for(int j=1; j<=n; j++){
+            if(visited[i]==1 && visited[j]==0){
+                if(a[i][j]<min){
+                    min = a[i][j];
+                    indi = i;
+                    indj = j;
+                } else {
+                    flag++;
+                }
+            } else {
+                flag++;
+            }
+        }
+    }
+
+    t_wt = t_wt + a[indi][indj];
+    printf("%d to %d\t%d\n", indi, indj, a[indi][indj]);
+    c++;
+    visited[indj] = 1;
+
+    if(c==n-1)
+        return;
+    prim(indj);
+}
+
+int main()
+{
+    printf("Enter the no. of vertices: \n");
+    scanf("%d", &n);
+    printf("\nEnter the weighted matrix: \n");
+    for(int i=1; i<=n; i++){
+         visited[i]=0;
+        for(int j=1;j<=n;j++){
+            scanf("%d", &a[i][j]);
+        }
+    }
+    printf("Minimum spanning tree is: \n");
+    printf("Edges \t Weights \n");
+    prim(1);
+    printf("Minimum cost is: %d", t_wt);
+    return 0;
+}
