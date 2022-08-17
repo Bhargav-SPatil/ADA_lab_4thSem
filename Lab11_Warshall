@@ -1,9 +1,5 @@
 #include <stdio.h>
 
-int min(int a, int b){
-    return (a<b)? a: b;
-}
-
 void warshall(int a[][100], int n){
     
     int i, j, k;
